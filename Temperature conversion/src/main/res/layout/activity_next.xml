@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorAccent"
+    tools:context="com.wordpress.sjatyourservice.temperatureconversion.next">
+
+    <EditText
+        android:id="@+id/ed_far"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="207dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="84dp"
+        android:ems="10"
+        android:hint="Temp in Farenheit"
+        android:inputType="textPersonName"/>
+
+    <EditText
+        android:id="@+id/ed_Cel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/ed_far"
+        android:layout_marginStart="196dp"
+        android:ems="10"
+        android:hint="Temp in Celsius"
+        android:inputType="textPersonName"
+        android:layout_alignStart="@+id/ed_far"/>
+
+    <Button
+        android:id="@+id/bt_con_far_to_cel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="57dp"
+        android:text="Convert"
+        android:layout_below="@+id/ed_far"
+        android:layout_alignStart="@+id/ed_far"/>
+
+    <Button
+        android:id="@+id/bt_con_cel_to_far"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/bt_con_far_to_cel"
+        android:layout_alignBottom="@+id/bt_con_far_to_cel"
+        android:layout_alignStart="@+id/ed_Cel"
+        android:layout_marginStart="29dp"
+        android:text="CONVERT"/>
+
+
+
+    <TextView
+        android:id="@+id/tv_result_farenheit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/tv_result_celsius"
+        android:layout_alignEnd="@+id/bt_con_cel_to_far"
+        android:layout_marginEnd="12dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_result_celsius"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bt_con_far_to_cel"
+        android:layout_marginStart="13dp"
+        android:layout_marginTop="59dp"
+
+        />
+
+
+
+
+
+
+    <com.google.android.gms.ads.AdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+
+        ads:adSize="BANNER"
+        ads:adUnitId="ca-app-pub-5278704802151871/1458204256"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true">
+    </com.google.android.gms.ads.AdView>
+
+
+
+
+
+
+</RelativeLayout>
