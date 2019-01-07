@@ -1,5 +1,5 @@
-package y.espace;
+package com.wordpress.sjatyourservice.studentdatabase;
 
-public class Dialogone {
+public class Dialogone  {
 
 }
