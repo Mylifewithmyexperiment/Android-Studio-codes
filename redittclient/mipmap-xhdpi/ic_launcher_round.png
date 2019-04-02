@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="info" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="3c394285-3291-4de8-b240-7a5ddb310a38" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="JioSecure" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="210645481">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="3" />
+          <entry key="project.open.time.12" value="1" />
+          <entry key="project.open.time.3" value="1" />
+          <entry key="project.open.time.32" value="1" />
+          <entry key="project.open.time.34" value="1" />
+          <entry key="project.open.time.352" value="1" />
+          <entry key="project.open.time.4" value="1" />
+          <entry key="project.open.time.42" value="1" />
+          <entry key="project.open.time.46" value="2" />
+          <entry key="project.open.time.65" value="1" />
+          <entry key="project.opened" value="10" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="gradle" value="2" />
+          <entry key="java" value="28" />
+          <entry key="png" value="1" />
+          <entry key="xml" value="49" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="Groovy" value="2" />
+          <entry key="Image" value="1" />
+          <entry key="JAVA" value="28" />
+          <entry key="XML" value="49" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="dummy" value="12" />
+          <entry key="gradle" value="4" />
+          <entry key="java" value="5136" />
+          <entry key="txt" value="12" />
+          <entry key="xml" value="2802" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="Groovy" value="4" />
+          <entry key="JAVA" value="5136" />
+          <entry key="PLAIN_TEXT" value="24" />
+          <entry key="XML" value="2802" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/jiosecure/LoginScreen.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="87" column="22" lean-forward="true" selection-start-line="87" selection-start-column="22" selection-end-line="95" />
+              <folding>
+                <element signature="e#2171#3390#0" expanded="true" />
+                <element signature="e#3083#3291#0" expanded="true" />
+                <element signature="e#3290#3291#0" expanded="true" />
+                <element signature="e#3389#3390#0" expanded="true" />
+                <element signature="e#4702#5029#0" expanded="true" />
+                <element signature="e#5028#5029#0" expanded="true" />
+                <element signature="method#convertingJsonToQueryString#0;class#LoginScreen#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/jiosecure/OtpScreen.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="221">
+              <caret line="61" column="8" selection-start-line="61" selection-start-column="8" selection-end-line="61" selection-end-column="8" />
+              <folding>
+                <element signature="e#2135#2539#0" expanded="true" />
+                <element signature="e#2291#2459#0" expanded="true" />
+                <element signature="e#2458#2459#0" expanded="true" />
+                <element signature="e#2538#2539#0" expanded="true" />
+                <element signature="method#goingToLoginActivity#0;class#OtpScreen#0" />
+                <element signature="method#convertingJsonToQueryString#0;class#OtpScreen#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>\&lt;\?xml version\=\&quot;1\.0\&quot; encoding\=\&quot;utf\-8\&quot;\?\&gt;\n\&lt;RelativeLayout\n    xmlns\:android\=\&quot;http\:\/\/schemas\.android\.com\/apk\/res\/android\&quot;\n    xmlns\:app\=\&quot;http\:\/\/schemas\.android\.com\/apk\/res\-auto\&quot;\n    xmlns\:tools\=\&quot;http\:\/\/schemas\.android\.com\/tools\&quot;\n    android\:layout_width\=\&quot;match_parent\&quot;\n    android\:layout_height\=\&quot;match_parent\&quot;\n    tools\:context\=\&quot;\.SplashScreen\&quot;\&gt;\n\n    \&lt;ImageView\n        android\:id\=\&quot;\@\+id\/imageView\&quot;\n        android\:layout_width\=\&quot;wrap_content\&quot;\n        android\:layout_height\=\&quot;wrap_content\&quot;\nandroid\:layout_alignParentTop\=\&quot;true\&quot;\n        android\:layout_centerHorizontal\=\&quot;true\&quot;\n        \n        android\:src\=\&quot;\@drawable\/splash_screen_logo\&quot; \/\&gt;\n\n    \&lt;TextView\n        android\:id\=\&quot;\@\+id\/textView\&quot;\n        android\:layout_width\=\&quot;wrap_content\&quot;\n        android\:layout_height\=\&quot;wrap_content\&quot;\n        android\:text\=\&quot;Jio Secure\&quot;\n\n        andr

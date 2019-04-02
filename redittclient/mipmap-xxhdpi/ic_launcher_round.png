@@ -1,0 +1,366 @@
+package com.example.jiosecure;
+
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.AssetManager;
+import android.nfc.Tag;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import org.json.JSONObject;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.security.KeyManagementException;
+import java.security.KeyStore;
+import java.security.KeyStoreException;
+import java.security.NoSuchAlgorithmException;
+import java.security.cert.Certificate;
+import java.security.cert.CertificateException;
+import java.security.cert.CertificateFactory;
+import java.security.cert.X509Certificate;
+import java.util.Iterator;
+
+import javax.net.SocketFactory;
+import javax.net.ssl.HostnameVerifier;
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLContext;
+import javax.net.ssl.SSLHandshakeException;
+import javax.net.ssl.SSLSession;
+import javax.net.ssl.SSLSocket;
+import javax.net.ssl.SSLSocketFactory;
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.TrustManagerFactory;
+
+public class LoginScreen extends AppCompatActivity {
+
+    public EditText Mob_no;
+    public String mobileNo;
+    public String last_4_digit;
+    public  String  mobile_no;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login_screen);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+
+         Mob_no =   findViewById(R.id.phone_no);
+
+            Button login =  findViewById(R.id.login_button);
+            login.setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View v) {
+
+
+                     mobile_no = Mob_no.getText().toString();
+
+                    if(mobile_no.equals(""))                // when we need top access something from inner class it need to be declared final.
+                    {
+                        Toast.makeText(getApplicationContext(),"Enter Mobile No " +mobile_no , Toast.LENGTH_LONG).show();
+                    }
+                    else  {
+                        mobileNo = Mob_no.getText().toString();
+                        last_4_digit = mobileNo.substring(6, 10);
+                        Intent i = new Intent(LoginScreen.this, OtpScreen.class);
+                        i.putExtra("Last4Digit", last_4_digit);
+                        i.putExtra("Mobile No",mobile_no);
+                        startActivity(i);
+
+                        Thread doInBack_netowrk_operation = new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                doInBackground();
+                            }
+                        });
+                        doInBack_netowrk_operation.start();
+
+
+
+                    }
+                }
+            });
+        }
+
+
+
+
+
+
+
+
+
+    protected String doInBackground(String... strings)
+    {
+
+
+        Log.i("enter","In do in background method");
+
+
+        // certificate type things
+
+        SSLContext context = null;
+        HostnameVerifier hostnameVerifier = null;
+        try {
+            CertificateFactory cf = CertificateFactory.getInstance("X.509");
+            AssetManager assetManager = getResources().getAssets();
+            InputStream caInput = assetManager.open("sslnbiot.cer");
+            Certificate ca= cf.generateCertificate(caInput);
+
+
+            String keyStoreType = KeyStore.getDefaultType();
+            KeyStore keyStore = KeyStore.getInstance(keyStoreType);
+            keyStore.load(null, null);
+            keyStore.setCertificateEntry("ca", ca);
+
+
+            String tmfAlgorithm = TrustManagerFactory.getDefaultAlgorithm();
+            TrustManagerFactory tmf = TrustManagerFactory.getInstance(tmfAlgorithm);
+            tmf.init(keyStore);
+
+
+            context = SSLContext.getInstance("TLS");
+            context.init(null, tmf.getTrustManagers(), null);
+
+            hostnameVerifier = new HostnameVerifier() {
+                @Override
+                public boolean verify(String hostname, SSLSession session) {
+                    HostnameVerifier hv = HttpsURLConnection.getDefaultHostnameVerifier();
+                    return hv.verify("iotconnect.rancoretech.com", session);
+                }
+            };
+        } catch (CertificateException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (KeyStoreException e) {
+            e.printStackTrace();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
+        }
+
+
+
+
+
+        try {
+
+
+
+
+
+            {
+               URL url = new URL("https://116.50.76.148:8086/nbiot/appRest/");    // it is server ip
+               // URL url = new URL("https://NBIoTAppServerIp:NBIoTAppServerPort/<RespectiveAPI-context>/ ");    // it is server ip
+                HttpsURLConnection conn = (HttpsURLConnection) url.openConnection();
+                Log.d("connection Successful","conn");
+                conn.setSSLSocketFactory(context.getSocketFactory());
+                conn.setHostnameVerifier(hostnameVerifier);
+
+                Log.i("HostnameVerifier","hostnameVerifier");
+
+                conn.setReadTimeout(10000); //10  sec
+                conn.setConnectTimeout(10000); // 10sec
+                conn.setRequestMethod("POST");
+                conn.setDoInput(true);
+                conn.setDoOutput(true);
+
+
+                final JSONObject jsonObject = new JSONObject();
+                jsonObject.put("operation", "getotp");
+                jsonObject.put("X-user.MSISDN ", mobile_no);
+                jsonObject.put("androidkey","12345");
+
+                Log.e("The json parameters are", jsonObject.toString());  // Nice
+
+
+
+                OutputStream os = conn.getOutputStream();
+                BufferedWriter bufferwriter = new BufferedWriter(new OutputStreamWriter(os, "UTF-8"));
+                bufferwriter.write(convertingJsonToQueryString(jsonObject));
+                bufferwriter.flush();
+                bufferwriter.close();
+                os.close();
+
+
+                // now fetching the response code
+
+                int responseCode = conn.getResponseCode();
+
+                if (responseCode == HttpURLConnection.HTTP_OK) {
+                    Log.i("Received response","200 ok the connection is made");
+
+                    BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+
+
+                    StringBuffer sb = new StringBuffer("");
+                    String line = "";
+                    // concept to read entire response code
+
+                    while ((line = br.readLine()) != null) {
+
+                        sb.append(line);
+                        break;
+
+                    }
+                    br.close();
+                    return sb.toString();
+
+                } else {
+                    String returning_string = new String("false " + responseCode);
+                    return returning_string;
+                }
+            }
+
+
+
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+
+            return new String("Exception " + e.getMessage());
+
+
+        }
+
+//we need to add error code how to do that
+
+
+    }
+
+
+
+
+
+
+
+
+    public String convertingJsonToQueryString(JSONObject param) throws Exception {
+
+
+        StringBuilder result = new StringBuilder();
+        boolean first = true;
+        Iterator<String> itr = param.keys();
+
+
+        while (itr.hasNext()) {
+            String key = itr.next();
+            Object value = param.get(key);
+
+            if (first)
+                first = false;
+            else
+                result.append("&");
+
+            result.append(URLEncoder.encode(key, "UTF-8"));
+            result.append("=");
+            result.append(URLEncoder.encode(value.toString(), "UTF-8"));
+        }
+        return result.toString();
+
+    }
+
+
+
+
+
+
+}
+
+
+
+/**   DOCUMENTATION COMMENTS
+ *
+
+ while in networkOnMainThreadException
+ we need to create a thread and put the codes in runnable method as it occur because
+
+ it says the application try to perform a network operation on main thread.
+
+
+
+
+
+ *
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*  practising code
+
+
+    public void sslCertificate() {
+
+        try {
+            HttpsURLConnection connection = (HttpsURLConnection) new URL("https://NBIoTAppServerIp:NBIoTAppServerPort/<RespectiveAPI-context>/ ");
+            connection.setSSLSocketFactory(buildSslSocketFactory);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+
+    private static SSLSocketFactory buildSslSocketFactory(Context context)
+    {
+        // here we add support for self-signed SSL certificates
+
+
+        try {
+            CertificateFactory cf = CertificateFactory.getInstance("X.509");
+
+            InputStream fetchCertFromAssets = context.getAssets().openNonAssetFd("C:\\Users\\shashi.jaiswal\\AndroidStudioProjects\\JioSecure\\app\\src\\main\\assets\\sslnbiot.cer")
+
+              InputStream caInput  = new BufferedInputStream(fetchCertFromAssets);
+            Certificate ca;
+
+
+            try {
+                ca= cf.generateCertificate(caInput);
+            } finally {
+                caInput.close();
+            }
+
+
+            //creating a keystore with trust manager option.
+
+            String  keystore 
