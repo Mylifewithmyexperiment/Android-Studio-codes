@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Screen2">
+
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar2"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_weight="1"
+            android:background="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+
+            <ImageView
+                android:id="@+id/delete"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="300dp"
+                android:layout_marginStart="250dp"
+                android:src="@drawable/delete_image" />
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+
+    <ImageView
+        android:id="@+id/image_of_item"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="fitXY"
+        android:layout_below="@id/appbar"
+        android:src="@drawable/hotel" />
+
+    <TextView
+        android:id="@+id/location_type_screen2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/image_of_item"
+        android:layout_margin="10dp"
+
+        android:layout_marginStart="10dp"
+        android:text="Location Type" />
+
+    <ImageView
+        android:id="@+id/shop_icon"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_below="@id/location_type_screen2"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/shop1" />
+
+
+    <TextView
+        android:id="@+id/get_location_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/location_type_screen2"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/shop_icon"
+        android:text="Shop"
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/locaion_name_screen2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/shop_icon"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:text="Location Name" />
+
+    <TextView
+        android:id="@+id/get_location_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/locaion_name_screen2"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="Seawood Shop"
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/address_screen2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/get_location_name"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"
+        android:text="Address" />
+
+    <TextView
+        android:id="@+id/get_location_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/address_screen2"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:text="This shop is located in thane"
+        android:textColor="#000000" />
+
+
+</RelativeLayout>

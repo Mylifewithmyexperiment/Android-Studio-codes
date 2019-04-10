@@ -1,19 +1,10 @@
 <resources>
-    <string name="app_name">Reditt Client</string>
-    <string name="title_activity_home_page">HomePage</string>
-    <string name="tab_text_home">Home</string>
-    <string name="tab_text_popular"> Popular</string>
+    <string name="app_name">ALL IN ONE</string>
     <string name="action_settings">Settings</string>
-    <string name="section_format">Hello World from section: %1$d</string>
-    <string name="like">Like</string>
-    <string name="comment">Comment</string>
-    <string name="share">Share</string>
-    <string name="comment_number">200</string>
-    <string name="title">Energy Ring wraps a battery indicator around the Galaxy S10 hole punch camera - Android Police</string>
-    <string name="subreddit">The hole-punch shaped front cam on the Galaxy S10 family might have been an eyesore for some,
-        but that only lasted all of two minutes. Soon, creative users were making wallpapers to fit perfectly with the cutout,
-        then they established a subreddit for them, </string>
-
-
-
+    <array name="shop_type">
+        <item>All Locations</item>
+        <item>shop</item>
+        <item>resturant</item>
+        <item>flat</item>
+    </array>
 </resources>
