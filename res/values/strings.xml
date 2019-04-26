@@ -1,10 +1,7 @@
 <resources>
-    <string name="app_name">ALL IN ONE</string>
-    <string name="action_settings">Settings</string>
-    <array name="shop_type">
-        <item>All Locations</item>
-        <item>shop</item>
-        <item>resturant</item>
-        <item>flat</item>
-    </array>
+    <string name="app_name">Search contacts</string>
+    <string name="appbar_scrolling_view_behavior" translatable="false">
+        android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
+    <string name="title_activity_next">NextActivity</string>
+
 </resources>
